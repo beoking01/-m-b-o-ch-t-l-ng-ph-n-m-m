@@ -1,0 +1,49 @@
+const patientsRoutes = require('./patientRoutes');
+const patientController = require('../controllers/patientController');
+const appointmentsRoutes = require('./appointmentRoutes');
+const servicesRoutes = require('./serviceRoutes');
+const medicineRoutes = require('./medicineRoutes');
+const labOrderRoutes = require('./labOrderRoutes');
+const prescriptionRoutes = require('./prescriptionRoutes');
+const invoiceRoutes = require('./invoiceRoutes');
+const doctorRoutes = require('./doctorRoutes');
+const accountRoutes = require('./accountRoutes');
+const healthProfileRoutes = require('./healthProfileRoutes');
+const scheduleRoutes = require('./scheduleRoutes');
+const specialtyRoutes = require('./specialtyRoutes');
+const receptionistRoutes = require('./receptionistRoutes');
+const familyMemberRoutes = require('./familyMemberRoutes');
+const treatmentRoutes = require('./treatmentRoutes');
+const roleRoutes = require('./roleRoutes');
+const authenticate = require('../middlewares/authenticate');
+const adminRoutes = require('./adminRoutes');
+const authorize = require('../middlewares/authorize');
+const statsRoutes = require('./statsRoutes');
+const chatbotRoutes = require('./chatbotRoutes');
+const vnpayRoutes = require('./vnpayRoutes');
+
+module.exports = (app) => {
+    app.use('/invoices/vnpay', vnpayRoutes);
+    // Khai báo riêng route bệnh nhân self để tránh ràng buộc permission theo module chưa đủ
+    app.get('/patients/account/:accountId', authenticate.authenticate, patientController.getByAccountId);
+    app.use('/patients', authenticate.authenticate, authorize.authorize('patient'), patientsRoutes);
+    app.use('/appointments', authenticate.authenticate, authorize.authorize('appointment'), appointmentsRoutes);
+    app.use('/services', servicesRoutes);
+    app.use('/medicines', medicineRoutes);
+    app.use('/laborders', labOrderRoutes);
+    app.use('/prescriptions', prescriptionRoutes);
+    // Invoice routes với auth (các routes khác)
+    app.use('/invoices', authenticate.authenticate, authorize.authorize('invoice'), invoiceRoutes);
+    app.use('/doctors', doctorRoutes);
+    app.use('/accounts', accountRoutes);
+    app.use('/health-profiles', healthProfileRoutes);
+    app.use('/schedules', scheduleRoutes);
+    app.use('/specialties', specialtyRoutes);
+    app.use('/receptionists', receptionistRoutes);
+    app.use('/family-members', familyMemberRoutes);
+    app.use('/treatments', treatmentRoutes);
+    app.use('/admins', adminRoutes);
+    app.use('/admin/roles', roleRoutes);
+    app.use('/stats', statsRoutes);
+    app.use('/chatbot', chatbotRoutes);
+}

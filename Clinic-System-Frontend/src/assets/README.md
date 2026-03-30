@@ -1,0 +1,1 @@
+Thư mục để hình ảnh, video

@@ -1,0 +1,61 @@
+{
+  "name": "dental-clinic-backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Do-an-tot-nghiep-Phong-kham-nha-khoa/Dental-Clinic-Backend#readme",
+  "bugs": {
+    "url": "https://github.com/Do-an-tot-nghiep-Phong-kham-nha-khoa/Dental-Clinic-Backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Do-an-tot-nghiep-Phong-kham-nha-khoa/Dental-Clinic-Backend.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "nodemon --inspect ./src/app.js",
+    "test": "cross-env NODE_ENV=test jest --coverage --runInBand",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
+    "test:unit": "cross-env NODE_ENV=test jest --testPathPattern=tests/unit",
+    "test:integration": "cross-env NODE_ENV=test jest --testPathPattern=tests/integration --runInBand",
+    "test:file": "cross-env NODE_ENV=test jest --runInBand"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.13.2",
+    "axios-retry": "^4.5.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.8.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "express-validator": "^7.3.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "md5": "^2.3.0",
+    "moment": "^2.30.1",
+    "mongoose": "^8.18.2",
+    "multer": "^2.0.2",
+    "multer-storage-cloudinary": "^2.2.1",
+    "node-cache": "^5.1.2",
+    "nodemailer": "^7.0.10",
+    "nodemon": "^3.1.10",
+    "openai": "^6.15.0",
+    "querystring": "^0.2.1",
+    "streamifier": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "cross-env": "^10.1.0",
+    "jest": "^30.2.0",
+    "mongodb-memory-server": "^11.0.1",
+    "supertest": "^7.1.4"
+  }
+}

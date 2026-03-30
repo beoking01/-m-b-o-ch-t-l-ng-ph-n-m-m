@@ -1,0 +1,1 @@
+Thư mục để context quản lý state: Trạng thái đăng nhập, theme sáng/tối
